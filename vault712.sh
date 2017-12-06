@@ -4,6 +4,9 @@
 ##Download on https://github.com/BloddyBaron/Vault712
 
 ##Rust installer function
+sudo apt-get update -y
+sudo apt-get install build-essential cmake -y
+
 rust_installer()
 {
 curl https://sh.rustup.rs -sSf | sh
