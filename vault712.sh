@@ -4,11 +4,11 @@
 ##Download on https://github.com/BloddyBaron/Vault712
 
 ##Rust installer function
-sudo apt-get update -y
-sudo apt-get install build-essential cmake -y
-
 rust_installer()
 {
+sudo apt-get update -y
+sudo apt-get install build-essential cmake -y	
+	
 curl https://sh.rustup.rs -sSf | sh
 source $HOME/.cargo/env
 }
@@ -63,12 +63,12 @@ EOF
 	echo " "
 	echo "Grin has been succesfully installed, please choose one the options below. NOTE: You must start the Grin server and node before choosing other options\n"
 	echo "Please select an option\n"
-	echo "1) Start a Grin Server"
-	echo "2) Start a Grin Node"
-	echo "3) View Balance "
+	echo "1) Start a Grin Node"
+	echo "2) Start a Grin Mining Server"
+	echo "3) View Confirmed & Spendable Balance "
 	echo "4) Send Grin's to an IP:PORT"
 	echo "5) Receive Grin's to an IP:PORT"
-	echo "6) Show connected peers"
+	echo "6) Show Connected Peers"
 	echo "7) Exit"
 	echo "====================================="
 	
@@ -90,16 +90,6 @@ done
 
 option_1()
 {
-  echo "\nPress ENTER To Start a Grin Server..."
-    read continue
-    ##open terminal and run a new shell starting the server
-    chmod +x vault712_server.sh
-    gnome-terminal --tab -e "./vault712_server.sh" 
-	return
-}
-
-option_2()
-{
 	echo "\nPress ENTER To Start a Grin Node..."
     read continue
     ##open terminal and run a new shell starting the wallet/node listener
@@ -108,12 +98,22 @@ option_2()
 	return
 }
 
-option_3()
+option_2()
 {
-	echo "option 3"
-	echo "\nPress ENTER To Continue..."
-	##TODO
-    read
+    echo "\nPress ENTER To Start a Grin Server..."
+    read continue
+    ##open terminal and run a new shell starting the server
+    chmod +x vault712_server.sh
+    gnome-terminal --tab -e "./vault712_server.sh" 
+	return
+}
+
+option_3()
+{   
+	#chmod +x vault712_server.sh
+    #gnome-terminal --tab -e "./vault712_wallet.sh"
+	#TOFINISH
+	read
 	return
 }
 
@@ -145,18 +145,17 @@ option_6()
 }
 
 ##Check if Rust is installed
-if type rustc 2>/dev/null; 
+if [ "type -p rustc" ];
 then
-    clear
+     :
 else 
-    rust_installer
+     rust_installer
 fi
 
 ##Check if Grin is installed
-if [ -f "$HOME/mw/grin/grin.toml" ]
+if [ -d "$HOME/mw/grin/" ];
 then
     main_menu
 else
     main_installer
 fi
-
