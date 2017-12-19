@@ -61,15 +61,18 @@ do
 EOF
     
 	echo " "
-	echo "Grin has been succesfully installed, please choose one the options below. NOTE: You must start the Grin server and node before choosing other options\n"
+	echo "Grin has been succesfully installed, please choose one of the options below. NOTE: You must start the Grin server and node before choosing other options\n"
 	echo "Please select an option\n"
 	echo "1) Start a Grin Node"
 	echo "2) Start a Grin Mining Server"
 	echo "3) View Confirmed & Spendable Balance "
 	echo "4) Send Grin to an IP:PORT"
 	echo "5) Receive Grin to an IP:PORT"
-	echo "6) Show Individual Outputs"
-	echo "7) Exit"
+	echo "6) Send Grin to Termbin"
+	echo "7) Receive Grin from Termbin"
+	echo "8) Send Grin to an Email"
+	echo "9) Show Individual Outputs"
+	echo "10) Exit"
 	echo "====================================="
 	
 	read m_menu
@@ -82,7 +85,10 @@ EOF
 		4) option_4;;
 		5) option_5;;
 		6) option_6;;
-		7) exit 0;;
+		7) option_7;;
+		8) option_8;;
+		9) option_9;;
+		10) exit 0;;
 		*) echo "Error, invalid input, press ENTER to go back"; read;;
 	esac
 done
@@ -112,7 +118,6 @@ option_3()
 {   
 	chmod +x vault712_wallet.sh
     gnome-terminal --tab -e "./vault712_wallet.sh"
-	echo "Press ENTER To Start to return"
 	read
 	return
 }
@@ -120,7 +125,6 @@ option_3()
 option_4()
 {
 	echo "option 4"
-	echo "\nPress ENTER To Continue..."
 	##TODO
     read
 	return
@@ -129,7 +133,6 @@ option_4()
 option_5()
 {
 	echo "option 5"
-	echo "\nPress ENTER To Continue..."
 	##TODO
     read
 	return
@@ -137,9 +140,32 @@ option_5()
 
 option_6()
 {
+	echo "option 6"
+	##TODO
+    read
+	return
+}
+
+option_7()
+{
+	echo "option 7"
+	##TODO
+    read
+	return
+}
+
+option_8()
+{
+	echo "option 8"
+	##TODO
+    read
+	return
+}
+
+option_9()
+{
 	chmod +x vault712_wallet.sh
     gnome-terminal --tab -e "./vault712_outputs.sh"
-	echo "Press ENTER To Start to return"
 	read
 	return
 }

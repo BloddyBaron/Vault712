@@ -6,10 +6,10 @@ cd $HOME/mw/grin/node1
 export PATH=/$HOME/mw/grin/target/debug/:$PATH
 if [ -f "$HOME/mw/grin/node1/wallet.seed" ]
 then
-    echo Grin Node is now running
+    echo Grin Node is now running, please keep this window open
     grin wallet -p password -e listen
 else
-    echo Grin Node is now running
+    echo Grin Node is now running, please keep this window open
     grin wallet init
     grin wallet -p password -e listen
 fi

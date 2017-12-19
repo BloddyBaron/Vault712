@@ -4,14 +4,17 @@ Vault 712 is a Grin installer for the MimbleWimble protocol. It will install Gri
 
 ## Getting Started
 
+Download all files below to the same directory
+
 ```
 wget https://raw.githubusercontent.com/BloddyBaron/Vault712/master/vault712.sh
 wget https://raw.githubusercontent.com/BloddyBaron/Vault712/master/vault712_server.sh
 wget https://raw.githubusercontent.com/BloddyBaron/Vault712/master/vault712_node.sh
 wget https://raw.githubusercontent.com/BloddyBaron/Vault712/master/vault712_wallet.sh
+wget https://raw.githubusercontent.com/BloddyBaron/Vault712/master/vault712_outputs.sh
 ```
 
-Download and run the shell script by executing ```./vault712``` on the command line interface 
+Run the main shell script by executing ```./vault712``` on the command line interface 
 
 Run ```chmod +x on vault712.sh``` to make sure you have permissions to run it on the command line interface
 
@@ -19,7 +22,9 @@ Follow the instructions to proceed.
 
 NOTE: Grin is not yet live, and is only on testnet. Do NOT use if you dont know what you are doing!
 
-This interactive shell script is to facilitate testing for the Grin blockchain. 
+This interactive shell script is to facilitate testing for the Grin blockchain. The installation script works independently of starting a node and server, and can be closed and opened independently to run different optional commands for Grin. 
+
+![alt text](https://user-images.githubusercontent.com/32465294/34165766-18ca3724-e4d5-11e7-9077-427a79e215d2.png)
 
 ### Requirements
 
@@ -33,7 +38,7 @@ This interactive shell script is to facilitate testing for the Grin blockchain.
 
 ## Information
 
-* More about Grin on: https://github.com/mimblewimble/grin
-* More about Grin compared to Bitcoin on: https://github.com/mimblewimble/grin/blob/master/doc/grin4bitcoiners.md
-* More information about Grin on: http://grin-tech.org/
-* More information about MimbleWimble & Grin development on: https://lists.launchpad.net/mimblewimble/
+* More about Grin: https://github.com/mimblewimble/grin
+* More about Grin compared to Bitcoin: https://github.com/mimblewimble/grin/blob/master/doc/grin4bitcoiners.md
+* More information about Grin: http://grin-tech.org/
+* More information about MimbleWimble & Grin development: https://lists.launchpad.net/mimblewimble/
