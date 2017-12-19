@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 ##Running Grin made bloddy easy
 ##Vault 712 by BloddyBaron
 ##Download on https://github.com/BloddyBaron/Vault712
@@ -37,6 +37,15 @@ cp grin.toml server/
 main_menu
 }
 
+##Start server function
+my_server()
+{
+cd $HOME/mw/grin/server
+export PATH=$HOME/mw/grin/target/debug/:$PATH
+grin server --mine run
+}
+
+
 ##Start the main part of the application menu if Grin and prerequisites are installed
 main_menu()
 {
@@ -61,8 +70,8 @@ do
 EOF
     
 	echo " "
-	echo "Grin has been succesfully installed, please choose one of the options below. NOTE: You must start the Grin server and node before choosing other options\n"
-	echo "Please select an option\n"
+	echo -e "Grin has been succesfully installed, please choose one of the options below.\nNOTE: You must start the Grin server and node before choosing other options\n"
+	echo -e "Please select an option\n"
 	echo "1) Start a Grin Node"
 	echo "2) Start a Grin Mining Server"
 	echo "3) View Confirmed & Spendable Balance "
@@ -96,22 +105,18 @@ done
 
 option_1()
 {
-	echo "\nPress ENTER To Start a Grin Node..."
-    read continue
     ##open terminal and run a new shell starting the wallet/node listener
     chmod +x vault712_node.sh
     gnome-terminal --tab -e "./vault712_node.sh"  
+    read
 	return
 }
 
 option_2()
 {
-    echo "\nPress ENTER To Start a Grin Server..."
-    read continue
-    ##open terminal and run a new shell starting the server
-    chmod +x vault712_server.sh
-    gnome-terminal --tab -e "./vault712_server.sh" 
-	return
+    ##export function, run a new shell starting the server
+	export -f my_server
+	$(gnome-terminal --tab -e "bash -c 'my_server'")
 }
 
 option_3()
