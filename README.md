@@ -8,6 +8,7 @@ Vault 712 is a Grin installer for the MimbleWimble protocol. It will install Gri
 wget https://raw.githubusercontent.com/BloddyBaron/Vault712/master/vault712.sh
 wget https://raw.githubusercontent.com/BloddyBaron/Vault712/master/vault712_server.sh
 wget https://raw.githubusercontent.com/BloddyBaron/Vault712/master/vault712_node.sh
+wget https://raw.githubusercontent.com/BloddyBaron/Vault712/master/vault712_wallet.sh
 ```
 
 Download and run the shell script by executing ```./vault712``` on the command line interface 
