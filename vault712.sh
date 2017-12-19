@@ -66,9 +66,9 @@ EOF
 	echo "1) Start a Grin Node"
 	echo "2) Start a Grin Mining Server"
 	echo "3) View Confirmed & Spendable Balance "
-	echo "4) Send Grin's to an IP:PORT"
-	echo "5) Receive Grin's to an IP:PORT"
-	echo "6) Show Connected Peers"
+	echo "4) Send Grin to an IP:PORT"
+	echo "5) Receive Grin to an IP:PORT"
+	echo "6) Show Individual Outputs"
 	echo "7) Exit"
 	echo "====================================="
 	
@@ -110,9 +110,9 @@ option_2()
 
 option_3()
 {   
-	#chmod +x vault712_server.sh
-    #gnome-terminal --tab -e "./vault712_wallet.sh"
-	#TOFINISH
+	chmod +x vault712_wallet.sh
+    gnome-terminal --tab -e "./vault712_wallet.sh"
+	echo "Press ENTER To Start to return"
 	read
 	return
 }
@@ -137,10 +137,10 @@ option_5()
 
 option_6()
 {
-	echo "option 6"
-	echo "\nPress ENTER To Continue..."
-	##TODO
-    read
+	chmod +x vault712_wallet.sh
+    gnome-terminal --tab -e "./vault712_outputs.sh"
+	echo "Press ENTER To Start to return"
+	read
 	return
 }
 

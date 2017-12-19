@@ -6,12 +6,12 @@ cd $HOME/mw/grin/node1
 export PATH=/$HOME/mw/grin/target/debug/:$PATH
 if [ -f "$HOME/mw/grin/node1/wallet.seed" ]
 then
-    grin wallet -p password info
+    grin wallet -p password outputs
     echo "Press ENTER To Return"
     read continue
 else
     grin wallet init
-    grin wallet -p password info
+    grin wallet -p password outputs
     echo "Press ENTER To Return"
     read continue
 fi
