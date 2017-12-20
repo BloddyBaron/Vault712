@@ -8,10 +8,6 @@ Download all files below to the same directory
 
 ```
 wget https://raw.githubusercontent.com/BloddyBaron/Vault712/master/vault712.sh
-wget https://raw.githubusercontent.com/BloddyBaron/Vault712/master/vault712_server.sh
-wget https://raw.githubusercontent.com/BloddyBaron/Vault712/master/vault712_node.sh
-wget https://raw.githubusercontent.com/BloddyBaron/Vault712/master/vault712_wallet.sh
-wget https://raw.githubusercontent.com/BloddyBaron/Vault712/master/vault712_outputs.sh
 ```
 
 Run the main shell script by executing ```./vault712``` on the command line interface 

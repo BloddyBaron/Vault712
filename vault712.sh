@@ -37,6 +37,22 @@ cp grin.toml server/
 main_menu
 }
 
+##Start node function
+my_node()
+{
+cd $HOME/mw/grin/node1
+export PATH=/$HOME/mw/grin/target/debug/:$PATH
+if [ -f "$HOME/mw/grin/node1/wallet.seed" ]
+then
+    echo Grin Node is now running, please keep this window open
+    grin wallet -p password -e listen
+else
+    echo Grin Node is now running, please keep this window open
+    grin wallet init
+    grin wallet -p password -e listen
+fi
+}
+
 ##Start server function
 my_server()
 {
@@ -45,6 +61,41 @@ export PATH=$HOME/mw/grin/target/debug/:$PATH
 grin server --mine run
 }
 
+##Start spend balance function
+my_spendbalance()
+{
+cd $HOME/mw/grin/node1
+export PATH=/$HOME/mw/grin/target/debug/:$PATH
+if [ -f "$HOME/mw/grin/node1/wallet.seed" ]
+then
+    grin wallet -p password info
+    echo "Press ENTER To Return"
+    read continue
+else
+    grin wallet init
+    grin wallet -p password info
+    echo "Press ENTER To Return"
+    read continue
+fi
+}
+
+##Start output function
+my_outputs()
+{
+cd $HOME/mw/grin/node1
+export PATH=/$HOME/mw/grin/target/debug/:$PATH
+if [ -f "$HOME/mw/grin/node1/wallet.seed" ]
+then
+    grin wallet -p password outputs
+    echo "Press ENTER To Return"
+    read continue
+else
+    grin wallet init
+    grin wallet -p password outputs
+    echo "Press ENTER To Return"
+    read continue
+fi
+}
 
 ##Start the main part of the application menu if Grin and prerequisites are installed
 main_menu()
@@ -105,11 +156,9 @@ done
 
 option_1()
 {
-    ##open terminal and run a new shell starting the wallet/node listener
-    chmod +x vault712_node.sh
-    gnome-terminal --tab -e "./vault712_node.sh"  
-    read
-	return
+   ##export function, run a new shell starting the wallet/node listener
+   export -f my_node
+   $(gnome-terminal --tab -e "bash -c 'my_node'")  
 }
 
 option_2()
@@ -121,10 +170,9 @@ option_2()
 
 option_3()
 {   
-	chmod +x vault712_wallet.sh
-    gnome-terminal --tab -e "./vault712_wallet.sh"
-	read
-	return
+    ##export function, run a new shell
+	export -f my_spendbalance
+	$(gnome-terminal --tab -e "bash -c 'my_spendbalance'")
 }
 
 option_4()
@@ -139,40 +187,32 @@ option_5()
 {
 	echo "option 5"
 	##TODO
-    read
-	return
 }
 
 option_6()
 {
 	echo "option 6"
 	##TODO
-    read
-	return
 }
 
 option_7()
 {
 	echo "option 7"
 	##TODO
-    read
-	return
 }
 
 option_8()
 {
 	echo "option 8"
 	##TODO
-    read
-	return
 }
 
 option_9()
 {
-	chmod +x vault712_wallet.sh
-    gnome-terminal --tab -e "./vault712_outputs.sh"
-	read
-	return
+    ##export function, run a new shell
+	export -f my_outputs
+	$(gnome-terminal --tab -e "bash -c 'my_outputs'")
+
 }
 
 ##Check if Rust is installed
