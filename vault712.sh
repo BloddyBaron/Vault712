@@ -13,6 +13,13 @@ curl https://sh.rustup.rs -sSf | sh
 source $HOME/.cargo/env
 }
 
+##Clang installer function
+clang_installer()
+{
+sudo apt-get update
+sudo apt-get install clang-3.8
+}
+
 ##Grin installer function
 main_installer()
 {
@@ -30,7 +37,7 @@ cd mw
 git clone https://github.com/mimblewimble/grin.git
 cd grin
 git checkout milestone/testnet1
-cargo build
+cargo build --verbose
 mkdir node1 server
 cp grin.toml node1/ 
 cp grin.toml server/
@@ -41,7 +48,7 @@ main_menu
 my_node()
 {
 cd $HOME/mw/grin/node1
-export PATH=/$HOME/mw/grin/target/debug/:$PATH
+export PATH=$HOME/mw/grin/target/debug:$PATH
 if [ -f "$HOME/mw/grin/node1/wallet.seed" ]
 then
     echo Grin Node is now running, please keep this window open
@@ -58,7 +65,7 @@ my_server()
 {
 cd $HOME/mw/grin/server
 export PATH=$HOME/mw/grin/target/debug/:$PATH
-grin server --mine run
+grin server -m run
 }
 
 ##Start spend balance function
@@ -83,7 +90,7 @@ fi
 my_outputs()
 {
 cd $HOME/mw/grin/node1
-export PATH=/$HOME/mw/grin/target/debug/:$PATH
+export PATH=$HOME/mw/grin/target/debug/:$PATH
 if [ -f "$HOME/mw/grin/node1/wallet.seed" ]
 then
     grin wallet -p password outputs
@@ -104,14 +111,7 @@ main_menu()
 while :
 do
     clear
-    cat << "EOF"
-      _____      _        __          __   _ _      _      
-     / ____|    (_)       \ \        / /  | | |    | |  
-    | |  __ _ __ _ _ __    \ \  /\  / /_ _| | | ___| |_ 
-    | | |_ | '__| | '_ \    \ \/  \/ / _` | | |/ _ \ __|
-    | |__| | |  | | | | |    \  /\  / (_| | | |  __/ |_ 
-     \_____|_|  |_|_| |_|     \/  \/ \__,_|_|_|\___|\__|
-                                                     
+    cat << "EOF" 
           __      __         _ _     ______ __ ___  
           \ \    / /        | | |   |____  /_ |__ \ 
            \ \  / /_ _ _   _| | |_      / / | |  ) |
@@ -214,6 +214,14 @@ option_9()
 	$(gnome-terminal --tab -e "bash -c 'my_outputs'")
 
 }
+
+##Check if Clang is installed
+if [ "type -p clang-3.8" ];
+then
+	:
+else
+	clang_installer
+fi
 
 ##Check if Rust is installed
 if [ "type -p rustc" ];
